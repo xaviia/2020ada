@@ -7,12 +7,28 @@ function preload() {
   tcThin = loadFont('fonts/KozGoPr6N/KozGoPr6N-Light.otf');
 }
 
-let maskImage;
-let Pmain;
-let photo;
-let imgClone;
+function Character(
+  character = '',
+  xAxisPosition = 0,
+  yAxisPosition = 0,
+  xAxisSpeed = 0,
+  yAxisSpeed = 0
+) {
+  this.character = character;
+  this.xAxisPosition = xAxisPosition
+  this.yAxisPosition = yAxisPosition;
+  this.xAxisSpeed = xAxisSpeed;
+  this.yAxisSpeed = yAxisSpeed;
+}
+
+const characters = [
+  new Character('A', 0, 0, 1, 1),
+  new Character('D', 400, 0, -0.8, -0.8),
+  new Character('A', 800, 300, 0.5, 0.5)
+]
+
 let x1 = 0,
-  y1 = 0,
+y1 = 0,
   x2 = 400,
   y2 = 0,
   x3 = 800,
@@ -26,14 +42,24 @@ let a1 = 1,
 let num1 = 65,
   num2 = 68,
   num3 = 65;
-let style = 1;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
 
+function drawPointer({
+  color = [255, 100, 100],
+  width = 20,
+  height = 20
+} = {}) {
+  noStroke();
+  fill(color[0], color[1], color[2]);
+  ellipse(mouseX, mouseY, width, height);
+}
+
 function draw() {
   curvertexWidepositive()
+  drawPointer()
 
   if ((x1 < x2 && x3 < x1) || (x1 > x2 && x3 > x1)) {
     num1 = 68;
@@ -48,10 +74,41 @@ function draw() {
     num2 = 65;
     num3 = 68;
   }
+}
+
+function drawCharacter({
+  character,
+  color = 0,
+  font,
+  size = 300,
+} = {}) {
+  if (!character) return
 
   noStroke();
-  fill(255, 100, 100);
-  ellipse(mouseX, mouseY, 20, 20);
+  fill(color);
+  textAlign(CENTER, CENTER);
+  textSize(size);
+
+  if (font) {
+    textFont(font);
+  }
+
+  text(character.character, character.xAxisPosition, character.yAxisPosition);
+
+  if (character.xAxisPosition >= windowWidth) {
+    character.xAxisSpeed = -Math.abs(character.xAxisSpeed)
+  } else if (character.xAxisPosition < 0) {
+    character.xAxisSpeed = Math.abs(character.xAxisSpeed)
+  }
+
+  if (character.yAxisPosition >= windowHeight) {
+    character.yAxisSpeed = -Math.abs(character.yAxisSpeed)
+  } else if (character.yAxisPosition < 0) {
+    character.yAxisSpeed = Math.abs(character.yAxisSpeed)
+  }
+
+  character.xAxisPosition += character.xAxisSpeed
+  character.yAxisPosition += character.yAxisSpeed
 }
 
 function FIRST() {
@@ -108,9 +165,10 @@ function THIRD() {
 
 function curvertexWidepositive() {
   background(255);
-  FIRST();
-  SECOND();
-  THIRD();
+  // FIRST();
+  // SECOND();
+  // THIRD();
+  characters.forEach(character => drawCharacter({ character }))
 
   noFill();
   stroke(255, 255, 150);
