@@ -37,8 +37,8 @@ function setup() {
   textColor.setAlpha(0);
   tint(255, 0);
   let cnv = createCanvas(windowWidth, windowHeight);
-  cnv.parent('canvasContainer');
-  cnv.mouseWheel(_mouseWheel)
+  cnv.parent("canvasContainer");
+  cnv.mouseWheel(_mouseWheel);
 }
 
 function drawPointer({ color = [83, 15, 255], width = 20, height = 20 } = {}) {
@@ -49,7 +49,7 @@ function drawPointer({ color = [83, 15, 255], width = 20, height = 20 } = {}) {
 
 function draw() {
   blendMode(BLEND);
-  sortADATexts(ADATexts)
+  sortADATexts(ADATexts);
 
   if (windowWidth <= 1306) {
     drawMobileTablet();
@@ -61,26 +61,26 @@ function draw() {
 }
 
 function sortADATexts(ADATexts) {
-  const index = [0, 1, 2]
+  const index = [0, 1, 2];
   index.sort((i, j) => {
-    x_i = ADATexts[i].xAxisPosition
-    x_j = ADATexts[j].xAxisPosition
+    x_i = ADATexts[i].xAxisPosition;
+    x_j = ADATexts[j].xAxisPosition;
 
     if (x_i < x_j) {
-      return -1
+      return -1;
     } else if (x_i > x_j) {
-      return 1
+      return 1;
     } else {
-      return 0
+      return 0;
     }
-  })
+  });
   index.forEach((element, index) => {
     if (index === 1) {
-      ADATexts[element].text = 'D'
+      ADATexts[element].text = "D";
     } else {
-      ADATexts[element].text = 'A'
+      ADATexts[element].text = "A";
     }
-  })
+  });
 }
 
 function drawText({
@@ -205,16 +205,13 @@ function drawMobileTablet() {
   strokeCap(ROUND);
 
   beginShape();
-  curveVertex(mouseY - 100, 15);
-  curveVertex(mouseX - 100, 15);
-  //curveVertex(windowWidth / 4, mouseX - 100);
-  //curveVertex(windowWidth / 4, mouseY - 100);
-  // curveVertex(windowWidth / 2, mouseX);
-  //curveVertex(windowWidth / 2, mouseX);
-  // curveVertex(mouseX + 700, windowHeight / 2);
-  //curveVertex(mouseY + 700, windowHeight / 2);
-  curveVertex(mouseY + 200, windowHeight - 100);
-  curveVertex(mouseX + 200, windowHeight - 100);
+  curveVertex(mouseX - 100, mouseX / 3 + mouseY * 0.5);
+  curveVertex(mouseX - 100, mouseX / 3 + mouseY * 0.5);
+  curveVertex(windowWidth / 2 - 0.5 * mouseX + 0.7 * mouseY, mouseY + 100);
+  curveVertex(windowWidth / 2, mouseX);
+  curveVertex(400 - mouseY / 2, windowHeight - mouseY /2);
+  curveVertex(windowWidth - mouseX / 2, windowHeight - mouseY / 2);
+  curveVertex(windowWidth - mouseX / 2, windowHeight - mouseY / 2);
   endShape();
 
   if (windowWidth < 592) drawMobileText();
@@ -235,14 +232,17 @@ function drawDesktopCurve() {
   strokeWeight(400);
   strokeJoin(ROUND);
   strokeCap(ROUND);
+
   beginShape();
-  curveVertex(mouseY - 100, 15);
-  curveVertex(mouseX - 100, 15);
-  curveVertex(windowWidth / 4, mouseY - 100);
+  curveVertex(mouseX - 300, mouseX / 3);
+  curveVertex(mouseX - 300, mouseX / 3);
+  curveVertex(windowWidth / 4, mouseX - 100);
+  curveVertex(windowWidth / 4 - 0.1 * mouseX, mouseY - 100);
   curveVertex(windowWidth / 2, mouseX);
+  curveVertex(mouseX + 700, windowHeight / 2);
   curveVertex(mouseY + 700, windowHeight / 2);
-  curveVertex(mouseY + 200, windowHeight - 100);
-  curveVertex(mouseX + 200, windowHeight - 100);
+  curveVertex(windowWidth - mouseX / 2, windowHeight - mouseY / 2);
+  curveVertex(windowWidth - mouseX / 2, windowHeight - mouseY / 2);
   endShape();
 }
 
@@ -307,9 +307,9 @@ function _mouseWheel(event) {
 }
 
 function mouseWheel() {
-  _alpha = alpha(backgroundColor)
+  _alpha = alpha(backgroundColor);
 
   if (_alpha < 255) {
-    return false
+    return false;
   }
 }

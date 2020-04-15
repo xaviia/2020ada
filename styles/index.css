@@ -31,6 +31,7 @@
 .nav {
   display: flex;
   padding-top: 16px;
+  align-items: baseline;
 }
 
 .nav .title {
@@ -62,10 +63,33 @@
 }
 
 .introduction {
-  /* white-space: pre-wrap; */
   color: white;
   font-family: KozGoPr6N-Regular;
   text-align: justify;
   font-size: 24px;
   padding: 2% 8% 2% 12%;
+}
+
+@media only screen and (max-width: 768px) {
+  .row {
+    display: block;
+  }
+
+  .about .title {
+    font-size: 20px;
+  }
+
+  .nav .menu__container .menu__lang {
+    font-size: 16px;
+    padding-right: 8px;
+  }
+
+  .nav .menu__container .menu{
+    font-size: 20px;
+  }
+
+  .introduction {
+    font-size: 18px;
+    padding: 2% 8% 5% 8%;
+  }
 }
