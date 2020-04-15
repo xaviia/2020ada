@@ -283,7 +283,7 @@ function drawDesktopText() {
   textFont(tcBold);
   text("新銳建築獎", 170 + 0.002 * mouseX, 30 + 0.002 * mouseY);
 
-  image(forImg, windowWidth - 730 + 1.2 * mouseX, windowHeight - 100 + 0.002 * mouseY);
+  image(forImg, windowWidth - 730, windowHeight - 100 + 0.002 * mouseY);
 }
 
 function windowResized() {
@@ -304,9 +304,12 @@ function _mouseWheel(event) {
   backgroundColor.setAlpha(nextAlpha);
   textColor.setAlpha(nextAlpha);
   tint(255, nextAlpha);
-  console.log(`event: ${event.deltaY}`)
-  console.log(`nextAlpha: ${nextAlpha}`)
+}
 
-  return nextAlpha < 255 ? false : undefined
-  // return false;
+function mouseWheel() {
+  _alpha = alpha(backgroundColor)
+
+  if (_alpha < 255) {
+    return false
+  }
 }
