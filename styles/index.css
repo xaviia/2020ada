@@ -1,0 +1,71 @@
+#p5_loading {
+  width: 100vw;
+  height: 100vh;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+.about {
+  background-color: rgb(255, 74, 39);
+  padding: 0 2%;
+  min-height: 100vh;
+}
+
+.about .title {
+  color: rgb(250, 90, 255);
+  font-family: KozGoPr6N-Bold;
+  font-size: 40px;
+}
+
+.about .title--english {
+  font-family: Montserrat-Bold;
+  font-size: 50px;
+}
+
+.nav {
+  display: flex;
+  padding-top: 16px;
+}
+
+.nav .title {
+  flex-grow: 1;
+  display: flex;
+  align-items: baseline;
+}
+
+.nav .menu__container {
+  display: flex;
+  align-items: baseline;
+}
+
+.nav .menu__container .menu__lang {
+  color: rgb(250, 90, 255);
+  font-family: Montserrat-ExtraBold;
+  font-size: 40px;
+  padding-right: 32px;
+}
+
+.nav .menu__container .menu__lang--active {
+  color: rgb(83, 15, 255)
+}
+
+.nav .menu__container .menu{
+  color: rgb(250, 90, 255);
+  font-family: Montserrat-Bold;
+  font-size: 50px;
+}
+
+.introduction {
+  /* white-space: pre-wrap; */
+  color: white;
+  font-family: KozGoPr6N-Regular;
+  text-align: justify;
+  font-size: 24px;
+  padding: 2% 8% 2% 12%;
+}
