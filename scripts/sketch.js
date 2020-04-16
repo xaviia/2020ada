@@ -1,11 +1,11 @@
 let fontExtra, fontBold, fontRegu, fontThin, tcBold, forImg;
-let backgroundColor, textColor;
+let backgroundColor, textColor, scrolltextColor;
 
 function preload() {
   fontExtra = loadFont("fonts/Montserrat/Montserrat-ExtraBold.ttf");
   fontBold = loadFont("fonts/Montserrat/Montserrat-Bold.ttf");
-  fontRegu = loadFont("fonts/Proxima/ProximaNova-Regular.otf");
-  fontThin = loadFont("fonts/Proxima/Proxima Nova Alt Thin.otf");
+  //fontRegu = loadFont("fonts/Proxima/ProximaNova-Regular.otf");
+  fontThin = loadFont("fonts/Montserrat/Montserrat-Light.ttf");
   tcBold = loadFont("fonts/KozGoPr6N/KozGoPr6N-Bold.otf");
   forImg = loadImage("images/forImg.png");
 }
@@ -35,6 +35,7 @@ function setup() {
   backgroundColor.setAlpha(0);
   textColor = color(0, 0, 255);
   textColor.setAlpha(0);
+  scrolltextColor = color(255, 255, 255);
   tint(255, 0);
   let cnv = createCanvas(windowWidth, windowHeight);
   cnv.parent("canvasContainer");
@@ -87,7 +88,7 @@ function drawText({
   textObj,
   color = [83, 15, 255],
   font = fontBold,
-  size = 300,
+  size = 200,
 } = {}) {
   if (!textObj) return;
 
@@ -118,6 +119,18 @@ function drawText({
 function drawTabletText() {
   blendMode(DIFFERENCE);
   noStroke();
+
+  scrolltextColor.setAlpha(0 + 128 * cos(millis() / 1000));
+  fill(scrolltextColor);
+  textSize(20);
+  textAlign(CENTER, CENTER);
+  textFont(fontThin);
+  text(
+    "SCROLL FOR MORE",
+    windowWidth / 2,
+    windowHeight - 150
+  );
+
   fill(textColor);
   textSize(100);
   textAlign(LEFT, BOTTOM);
@@ -173,11 +186,6 @@ function drawMobileText() {
     10 + 0.002 * mouseX,
     windowHeight - 10 + 0.002 * mouseY
   );
-
-  textSize(30);
-  textAlign(RIGHT, TOP);
-  textFont(fontBold);
-  text("menu", windowWidth - 10 + 0.002 * mouseX, 10 + 0.002 * mouseY);
 
   textSize(30);
   textAlign(LEFT, TOP);
@@ -249,14 +257,26 @@ function drawDesktopCurve() {
 function drawDesktopText() {
   blendMode(DIFFERENCE);
   noStroke();
+
+  scrolltextColor.setAlpha(0 + 128 * cos(millis() / 1000));
+  fill(scrolltextColor);
+  textSize(20);
+  textAlign(CENTER, CENTER);
+  textFont(fontThin);
+  text(
+    "SCROLL FOR MORE",
+    windowWidth / 2,
+    windowHeight - 150
+  );
+
   fill(textColor);
   textSize(50);
   textAlign(LEFT, BOTTOM);
   textFont(fontExtra);
   text(
     "2020 ADA AWARDS",
-    40 + 0.002 * mouseX,
-    windowHeight - 30 + 0.002 * mouseY
+    40 + 0.003 * mouseX,
+    windowHeight - 30 + 0.003 * mouseY
   );
 
   textSize(50);
@@ -264,26 +284,33 @@ function drawDesktopText() {
   textFont(fontBold);
   text(
     "emerging architects",
-    windowWidth - 40 + 0.002 * mouseX,
-    windowHeight - 30 + 0.002 * mouseY
+    windowWidth - 40 + 0.003 * mouseX,
+    windowHeight - 30 + 0.003 * mouseY
   );
-
-  textSize(50);
-  textAlign(RIGHT, TOP);
-  textFont(fontBold);
-  text("menu", windowWidth - 40 + 0.002 * mouseX, 20 + 0.002 * mouseY);
 
   textSize(50);
   textAlign(LEFT, TOP);
   textFont(fontBold);
-  text("ADA", 40 + 0.002 * mouseX, 20 + 0.002 * mouseY);
+  text(
+    "ADA",
+    40 + 0.003 * mouseX, 
+    20 + 0.003 * mouseY
+  );
 
   textSize(40);
   textAlign(LEFT, TOP);
   textFont(tcBold);
-  text("新銳建築獎", 170 + 0.002 * mouseX, 30 + 0.002 * mouseY);
+  text(
+    "新銳建築獎", 
+    170 + 0.003 * mouseX, 
+    30 + 0.003 * mouseY
+  );
 
-  image(forImg, windowWidth - 730, windowHeight - 100 + 0.002 * mouseY);
+  image(
+    forImg, 
+    windowWidth - 730 + 0.003 * mouseX, 
+    windowHeight - 100 + 0.003 * mouseY
+  );
 }
 
 function windowResized() {
@@ -297,6 +324,8 @@ function _mouseWheel(event) {
 
   if (nextAlpha > 255) {
     nextAlpha = 255;
+    scrolltextColor.setAlpha(0);
+
   } else if (nextAlpha < 0) {
     nextAlpha = 0;
   }
@@ -310,7 +339,5 @@ function mouseWheel() {
   const _alpha = alpha(backgroundColor);
   const delta = event.deltaY;
 
-  if (delta > 0 && _alpha < 255) {
     return false;
-  }
 }
