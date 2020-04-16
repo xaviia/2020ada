@@ -339,5 +339,7 @@ function mouseWheel() {
   const _alpha = alpha(backgroundColor);
   const delta = event.deltaY;
 
-    return false;
+  if (delta > 0 && _alpha < 255) {
+     return false;
+   }
 }
