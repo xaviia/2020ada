@@ -148,11 +148,6 @@ function drawTabletText() {
   );
 
   textSize(50);
-  textAlign(RIGHT, TOP);
-  textFont(fontBold);
-  text("menu", windowWidth - 40 + 0.002 * mouseX, 20 + 0.002 * mouseY);
-
-  textSize(50);
   textAlign(LEFT, TOP);
   textFont(fontBold);
   text("ADA", 40 + 0.002 * mouseX, 20 + 0.002 * mouseY);
@@ -339,7 +334,7 @@ function mouseWheel() {
   const _alpha = alpha(backgroundColor);
   const delta = event.deltaY;
 
-  if (delta > 0 && _alpha < 255) {
+  if (delta > 0 && _alpha < 254) {
      return false;
    }
 }
