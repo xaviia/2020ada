@@ -170,30 +170,32 @@ function drawMobileText() {
   textSize(50);
   textAlign(LEFT, BOTTOM);
   textFont(fontExtra);
-  text("2020", 10 + 0.002 * mouseX, windowHeight - 180 + 0.002 * mouseY);
-  text("ADA", 10 + 0.002 * mouseX, windowHeight - 130 + 0.002 * mouseY);
-  text("AWARDS", 10 + 0.002 * mouseX, windowHeight - 80 + 0.002 * mouseY);
+  text("2O2O", 30 + 0.002 * mouseX, windowHeight - 220 + 0.002 * mouseY);
+  text("ADA", 30 + 0.002 * mouseX, windowHeight - 170 + 0.002 * mouseY);
+  text("AWARDS", 30 + 0.002 * mouseX, windowHeight - 120 + 0.002 * mouseY);
+
+  forImg.resize(88.8, 44.4);
+  image(forImg, 30, windowHeight - 120 + 0.002 * mouseY);
 
   textSize(28);
   textFont(fontBold);
   text(
     "emerging architects",
-    10 + 0.002 * mouseX,
-    windowHeight - 10 + 0.002 * mouseY
+    30 + 0.002 * mouseX,
+    windowHeight - 50 + 0.002 * mouseY
   );
 
-  textSize(30);
+  textSize(40);
   textAlign(LEFT, TOP);
   textFont(fontBold);
-  text("ADA", 10 + 0.002 * mouseX, 10 + 0.002 * mouseY);
+  text("ADA", 30 + 0.002 * mouseX, 10 + 0.002 * mouseY);
 
-  textSize(23);
+  textSize(33);
   textAlign(LEFT, TOP);
   textFont(tcBold);
-  text("新銳建築獎", 83 + 0.002 * mouseX, 18 + 0.002 * mouseY);
+  text("新銳建築獎", 128 + 0.002 * mouseX, 18 + 0.002 * mouseY);
 
-  forImg.resize(88.8, 44.4);
-  image(forImg, 10, windowHeight - 80 + 0.002 * mouseY);
+  
 }
 
 function drawMobileTablet() {
@@ -299,11 +301,12 @@ function drawDesktopText() {
     140 + 0.003 * mouseX, 
     30 + 0.003 * mouseY
   );
-  scale(0.8, 0.8);
+
+  forImg.resize(100, 50);
   image(
     forImg, 
-    windowWidth - 400 + 0.003 * mouseX, 
-    windowHeight + 100 + 0.003 * mouseY
+    windowWidth - 580 + 0.003 * mouseX, 
+    windowHeight - 80 + 0.003 * mouseY
   );
 }
 
