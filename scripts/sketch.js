@@ -52,7 +52,7 @@ function draw() {
   blendMode(BLEND);
   sortADATexts(ADATexts);
 
-  if (windowWidth <= 1306) {
+  if (windowWidth <= 592) {
     drawMobileTablet();
   } else {
     drawDesktop();
@@ -132,7 +132,7 @@ function drawTabletText() {
   );
 
   fill(textColor);
-  textSize(100);
+  textSize(10);
   textAlign(LEFT, BOTTOM);
   textFont(fontExtra);
   text("2020", 40 + 0.002 * mouseX, windowHeight - 350 + 0.002 * mouseY);
@@ -197,13 +197,13 @@ function drawMobileText() {
 }
 
 function drawMobileTablet() {
-  background(255);
+  //background(255);
   background(backgroundColor);
-  ADATexts.forEach((textObj) => drawText({ textObj }));
+  //ADATexts.forEach((textObj) => drawText({ textObj }));
 
   noFill();
   stroke(255, 74, 39);
-  strokeWeight(400);
+  strokeWeight(300);
   strokeJoin(ROUND);
   strokeCap(ROUND);
 
@@ -217,8 +217,7 @@ function drawMobileTablet() {
   curveVertex(windowWidth - mouseX / 2, windowHeight - mouseY / 2);
   endShape();
 
-  if (windowWidth < 592) drawMobileText();
-  else drawTabletText();
+  drawMobileText();
 }
 
 function drawDesktop() {
@@ -232,7 +231,7 @@ function drawDesktop() {
 function drawDesktopCurve() {
   noFill();
   stroke(255, 74, 39);
-  strokeWeight(400);
+  strokeWeight(350);
   strokeJoin(ROUND);
   strokeCap(ROUND);
 
@@ -265,7 +264,7 @@ function drawDesktopText() {
   );
 
   fill(textColor);
-  textSize(50);
+  textSize(40);
   textAlign(LEFT, BOTTOM);
   textFont(fontExtra);
   text(
@@ -274,7 +273,7 @@ function drawDesktopText() {
     windowHeight - 30 + 0.003 * mouseY
   );
 
-  textSize(50);
+  textSize(40);
   textAlign(RIGHT, BOTTOM);
   textFont(fontBold);
   text(
@@ -283,7 +282,7 @@ function drawDesktopText() {
     windowHeight - 30 + 0.003 * mouseY
   );
 
-  textSize(50);
+  textSize(40);
   textAlign(LEFT, TOP);
   textFont(fontBold);
   text(
@@ -292,19 +291,19 @@ function drawDesktopText() {
     20 + 0.003 * mouseY
   );
 
-  textSize(40);
+  textSize(30);
   textAlign(LEFT, TOP);
   textFont(tcBold);
   text(
     "新銳建築獎", 
-    170 + 0.003 * mouseX, 
+    140 + 0.003 * mouseX, 
     30 + 0.003 * mouseY
   );
-
+  scale(0.8, 0.8);
   image(
     forImg, 
-    windowWidth - 730 + 0.003 * mouseX, 
-    windowHeight - 100 + 0.003 * mouseY
+    windowWidth - 400 + 0.003 * mouseX, 
+    windowHeight + 100 + 0.003 * mouseY
   );
 }
 
@@ -334,7 +333,5 @@ function mouseWheel() {
   const _alpha = alpha(backgroundColor);
   const delta = event.deltaY;
 
-  if (delta > 0 && _alpha < 254) {
-     return false;
-   }
+    return false;
 }
