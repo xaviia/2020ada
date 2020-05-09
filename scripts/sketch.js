@@ -270,7 +270,7 @@ function drawDesktopText() {
   textAlign(LEFT, BOTTOM);
   textFont(fontExtra);
   text(
-    "2020 ADA AWARDS",
+    "2O2O ADA AWARDS",
     40 + 0.003 * mouseX,
     windowHeight - 30 + 0.003 * mouseY
   );
