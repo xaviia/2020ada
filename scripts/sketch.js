@@ -31,6 +31,7 @@ const ADATexts = [
 ];
 
 function setup() {
+  noCursor();
   backgroundColor = color(83, 15, 255);
   backgroundColor.setAlpha(0);
   textColor = color(0, 0, 255);
